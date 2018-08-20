@@ -38,6 +38,14 @@ def kl(p, q):
 
     return np.sum(np.where(p != 0, p * np.log(p / q), 0))
 
+def kl_max(p, q):
+    """ KL_max divergence that takes the maximum of kl(p,q) and kl(q,p)"""
+    return max(kl(p,q), kl(q,p))
+
+def kl_avg(p,q):
+    """KL avg divergence takes the average of kl(p,q) and kl(q,p)"""
+    return (kl(p,q)+kl(q,p))/2
+
 def compute_property_divergence(domain_values, gold_values, sys_values):
     s=[]
     g=[]
